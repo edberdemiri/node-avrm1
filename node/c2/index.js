@@ -9,7 +9,7 @@ fs.appendFile('message.txt','hello world 2', (err) =>{
        throw err;
    }
 console.log('the file has been saved!');
-fs.readFile('message.txt','utf8',(err,data)=>
+fs.readFile('message.txt','utf8',(err,data) =>
 {
 if (err) {console.log("errorr while reading")}
 console.log(data);
