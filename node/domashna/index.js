@@ -8,7 +8,7 @@ fs.readFile('lorem.txt', 'utf8', (err,data) => {
 let data2 = data.split(' ');
 console.log(`Broj na zborovi:${data2.length}`); //Broj na zborovi
 
-let data3 = data.split('.'); // Broj na recenici
+let data3 = data.split(/[\.!?]/g); // Broj na recenici
 console.log(`Broj na recenici:${data3.length}`);
 
 const kar7 = (data) => // Funkcija za najdenje na zborovi so <=> od 7 karakteri 
@@ -61,7 +61,7 @@ const povzbor = (data) =>  //Funkcija za najdenje na najpovtoreniot zbor
             maxword = word;
         }
     }
-    console.log(`Najmnogu povtoren zbor:${maxword} i se povtoruva ${maxword} pati`);
+    console.log(`Najmnogu povtoren zbor:${maxword}`);
 }
 povzbor(data);
 
