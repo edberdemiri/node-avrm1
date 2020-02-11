@@ -44,7 +44,7 @@ const postStudents = (req, res) => {
     }
     else{
         data = JSON.parse(data);
-        delete json.id == req.body.value
+        
     }
     });
 };
