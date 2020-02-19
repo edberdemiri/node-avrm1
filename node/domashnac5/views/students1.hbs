@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="/students" method="post">
+    <form action="/" method="post">
         <input type="text" name="first_name" placeholder="first name" required="required" />
         <input type="text" name="last_name" placeholder="last name" required="required" />
         <input type="text" name="address" placeholder="address" required="required" />
@@ -23,16 +23,16 @@
             <th>Last Name</th>
             <th>Address</th>
             <th>Avg. Grade</th>
-        </tr>{{#each students}}
-        <form action="/students" method="POST">
-            
+        </tr>
+            {{#each students}}
+        <form action="/" method="POST">
             <tr id="id_{{this.id}}">
                 <td>{{this.first_name}}</td>
                 <td>{{this.last_name}}</td>
                 <td>{{this.address}}</td>
                 <td>{{this.avg_grade}}</td>
                 <td align="center">
-                    <button value="{{this.id}}" type="submit" name="deletee">Del</button>
+                    <button type="submit" name="deletee" value="{{this.id}}">Del</button>
                 </td>
         </form>
         </tr>
@@ -40,8 +40,8 @@
     </table>
     <br>
     <hr><br>
-    <form action="/students" method="POST">
-       <p>Select which student to edit</p>
+    <form action="/" method="POST">
+        <p>Select which student to edit</p>
         <select class="studentselect" name="studentselect">
             <optgroup label="Students">
                 {{#each students}}
@@ -66,6 +66,20 @@
         
         <input type="text" name="ediit" placeholder="insert the text to edit" required="required" />
         <button type="submit">Edit</button>
+    </form>
+    <form action="/" method="POST">
+
+        <br><br><br>
+        <p>Select which student to delete</p>
+        <select class="deletee" name="deletee">
+            <optgroup label="Students">
+                {{#each students}}
+                <option name="deletee" value="{{this.id}}">{{this.first_name}} {{this.last_name}}
+                </option>
+                {{/each}}
+            </optgroup>
+        </select>
+        <button type="submit">Delete</button>
     </form>
 </body>
 

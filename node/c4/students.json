@@ -26,5 +26,12 @@
         "last_name": "Dorsey",
         "address": "str. Main 122",
         "avg_grade": 10
+    },
+    {
+        "id": 1582074724707,
+        "first_name": "a",
+        "last_name": "a",
+        "address": "a",
+        "avg_grade": 122
     }
 ]
