@@ -1,0 +1,70 @@
+* {
+    font-family: sans-serif;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-color: teal;
+}
+.main-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form {
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .15);
+    padding: 20px;
+    box-sizing: border-box;
+}
+.form label{
+    display: block;
+    width: 100%;
+    /*margin-bottom: 20px;*/
+}
+.form label span{
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
+    /*text-transform: uppercase;*/
+    color:gray;
+}
+
+.form label input{
+    display: block;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: none;
+    border: 1px solid silver;
+    border-radius: 3px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+}
+.form button{
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 50px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color:black;
+    background-color: turquoise;
+    border:none;
+    border-radius: 3px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.form .reglink{
+    display: block;
+    font-size: 12px;
+    color: gray;
+    margin-bottom: 26px;
+    text-align: center;
+}

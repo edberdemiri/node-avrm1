@@ -52,7 +52,7 @@ app.post('/', (req, res) => {
     }
     if (req.body.ediit != undefined){
         
-        student.update(`${req.body.studentselect}`,{address:req.body.ediit})
+        student.update(`${req.body.studentselect}`,{first_name:req.body.ediit})
         .then(() => {
             return student.readAll();
         })
@@ -63,12 +63,7 @@ app.post('/', (req, res) => {
             res.render('students1', out);
         })
 }
- 
 
 })
-
-
-
-
 
 app.listen(8080);
