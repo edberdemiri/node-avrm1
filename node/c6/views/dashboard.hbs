@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/styles/main.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h2>dashboard</h2>
+        <a href="/logout">Log out</a>
+    </header>
+<h2 align="center">Complete list of the users</h2>
+   <table  width="80%" align="center">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+        </tr>
+            {{#each users}}
+            <tr>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
+                <td>{{this.email}}</td>
+        </form>
+        </tr>
+        {{/each}}
+    </table>
+
+</body>
+
+</html>

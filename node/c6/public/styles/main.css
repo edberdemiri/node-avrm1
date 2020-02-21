@@ -1,13 +1,17 @@
 * {
     font-family: sans-serif;
 }
-html, body {
+
+html,
+body {
     width: 100%;
     height: 100%;
 }
-body{
+
+body {
     background-color: teal;
 }
+
 .main-container {
     width: 100%;
     height: 80%;
@@ -15,6 +19,7 @@ body{
     justify-content: center;
     align-items: center;
 }
+
 .form {
     width: 300px;
     height: 100%;
@@ -24,20 +29,22 @@ body{
     padding: 20px;
     box-sizing: border-box;
 }
-.form label{
+
+.form label {
     display: block;
     width: 100%;
     /*margin-bottom: 20px;*/
 }
-.form label span{
+
+.form label span {
     display: block;
     padding: 10px 0;
     font-size: 18px;
     /*text-transform: uppercase;*/
-    color:gray;
+    color: gray;
 }
 
-.form label input{
+.form label input {
     display: block;
     width: calc(100% - 20px);
     padding: 10px;
@@ -46,25 +53,51 @@ body{
     border-radius: 3px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
 }
-.form button{
+
+.form button {
     width: 100%;
     padding: 10px 0;
     margin-top: 50px;
     font-size: 18px;
     text-transform: uppercase;
-    color:black;
+    color: black;
     background-color: turquoise;
-    border:none;
+    border: none;
     border-radius: 3px;
     font-weight: bold;
     box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
     cursor: pointer;
     margin-bottom: 20px;
 }
-.form .reglink{
+
+.form .reglink {
     display: block;
     font-size: 12px;
     color: gray;
     margin-bottom: 26px;
     text-align: center;
+}
+
+table {
+    border: solid 1px white;
+    font: normal 13px Arial, sans-serif;
+    text-align: center;
+    width: 800px;
+}
+
+td {
+    background-color: lightblue;
+    border: solid 1px #DDEEEE;
+    color: #333;
+    padding: 10px;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+th {
+    background-color: #DDEFEF;
+    border: solid 1px #DDEEEE;
+    color: rgb(67, 26, 100);
+    padding: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #fff;
 }

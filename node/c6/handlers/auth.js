@@ -1,5 +1,8 @@
 const bcrypt = require('bcryptjs');
+var jwt = require('jsonwebtoken');
 const users = require('../models/users');
+
+const tokenKey = 'pwd123!';
 
 const viewLogin = (req, res) => {
     res.render('login');
@@ -7,22 +10,23 @@ const viewLogin = (req, res) => {
 const apiLogin = (req, res) => {
     if (req.body.email != undefined && req.body.email.length > 0 &&
         req.body.password != undefined && req.body.password.length > 0
-        ) {
-            users.getByEmail(req.body.email)
-            .then(data=>{
-                if (bcrypt.compareSync(req.body.password, data.password))
-            {
-                res.send('correct');
-            }else{
-                res.redirect('/')
-            }
+    ) {
+        users.getByEmail(req.body.email)
+            .then(data => {
+                if (bcrypt.compareSync(req.body.password, data.password)) {
+                    let token = jwt.sign({ email: data.email }, tokenKey);
+                    res.cookie('jwt', token);
+                    res.redirect('/dashboard');
+                } else {
+                    res.redirect('/?err=1')
+                }
             })
-            .catch(err=>{
-                res.redirect('/');
+            .catch(err => {
+                res.redirect('/?err=2');
             })
     }
     else {
-        res.redirect('/');
+        res.redirect('/?err=3');
     }
 }
 const viewRegister = (req, res) => {
@@ -64,5 +68,6 @@ module.exports = {
     viewLogin,
     apiLogin,
     viewRegister,
-    apiRegister
+    apiRegister,
+    tokenKey
 }
