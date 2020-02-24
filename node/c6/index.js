@@ -12,8 +12,8 @@ const blogposts = require('./handlers/blogposts');
 
 db.initDB();
 let app = express();
-
-app.use(bodyParser.urlencoded({extended: false}));
+hbs.registerPartials(__dirname + '/views/partials');
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public'));
 
@@ -22,10 +22,10 @@ app.use((req, res, next) => {
         '/',
         '/register'
     ];
-    if(!whitelist.includes(req.path)){
-        if(req.cookies.jwt){
+    if (!whitelist.includes(req.path)) {
+        if (req.cookies.jwt) {
             jwt.verify(req.cookies.jwt, auth.tokenKey, (err, payload) => {
-                if(err){
+                if (err) {
                     return res.status(401).send('Unauthorized');
                 }
                 return next();
@@ -66,7 +66,7 @@ app.post('/blogposts/edit', blogposts.apiEditBlogpost)
 app.get('/blogposts/delete', blogposts.apiDeleteBlogpost)
 
 app.listen(8080, (err) => {
-    if(err){
+    if (err) {
         console.error(err);
         return;
     }
