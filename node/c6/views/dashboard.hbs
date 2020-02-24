@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="/styles/main.css"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
-
 <body>
     <header>
-        <h2>dashboard</h2>
-        <a href="/logout">Log out</a>
+        <div>
+            <h2>Dashboard</h2>
+            <a href="/">Log out</a>
+        </div>
     </header>
-<h2 align="center">Complete list of the users</h2>
-   <table  width="80%" align="center">
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Address</th>
-        </tr>
-            {{#each users}}
+    <div>
+        <table>
             <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            {{#each users}}
+            <tr id="uid_{{this._id}}">
                 <td>{{this.first_name}}</td>
                 <td>{{this.last_name}}</td>
                 <td>{{this.email}}</td>
-        </form>
-        </tr>
-        {{/each}}
-    </table>
-
+                <td>
+                    <a href="/users/edit/{{this.id}}/{{this.first_name}}/{{this.last_name}}/{{this.email}}">edit</a>
+                    <a href="/users/delete/{{this.id}}/{{this.email}}">delete</a>
+                </td>
+            </tr>
+            {{/each}}
+            <tr>
+                <td colspan="4">
+                    <a class="new" href="/users/new">Add New</a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>
-
 </html>

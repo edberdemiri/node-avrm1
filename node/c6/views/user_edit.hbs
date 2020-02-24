@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/dashboard.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h2>Edit User</h2>
+            <a href="/">Log out</a>
+        </div>
+    </header>
+    {{!-- The user id: {{user_id}}{{first_name}} --}}
+
+    <div class="main-container">
+        <div class="form">
+            <h1>Edit</h1>
+            <p class="editp">Fill just the poles you want to edit</p>
+            <form method="POST" action="/users/edit">
+                <label>
+                    <span> First Name:</span>
+                    <input type="hidden" name="id" value="{{user_id}}" />
+                    <input type="text" name="first_name" placeholder="{{first_name}}" />
+                </label>
+                <label>
+                    <span> Last Name:</span>
+                    <input type="text" name="last_name" placeholder="{{last_name}}" />
+                </label>
+                <label>
+                    <span>E-mail:</span>
+                    <input type="email" name="email" placeholder="{{email}}" />
+                </label>
+                <label>
+                    <span> Password:</span>
+                    <input type="password" name="password" /><br><br>
+                </label>
+                <label>
+                    <span> Confirm Password:</span>
+                    <input type="password" name="password2" />
+                </label>
+                <button type="submit">Edit</button>
+                <a href="/dashboard" class="reglink">Back to dashboard</a>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

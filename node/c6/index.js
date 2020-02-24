@@ -1,19 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-var jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser')
 const hbs = require('hbs');
+var jwt = require('jsonwebtoken');
 const db = require('./bootstrap/db');
 const users = require('./handlers/users');
 const auth = require('./handlers/auth');
 const dashboard = require('./handlers/dashboard');
+const blogposts = require('./handlers/blogposts');
+// const blogposts = require('./handlers/blogposts'); // create this file
 
 db.initDB();
-
 let app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.set('view engine', 'hbs');
 app.use(express.static('public'));
 
 app.use((req, res, next) => {
@@ -21,22 +22,26 @@ app.use((req, res, next) => {
         '/',
         '/register'
     ];
-    if (!whitelist.includes(req.path)) {
-        if (req.cookies.jwt) {
+    if(!whitelist.includes(req.path)){
+        if(req.cookies.jwt){
             jwt.verify(req.cookies.jwt, auth.tokenKey, (err, payload) => {
-                if (err) {
-                    return res.status(401).send('unathorized');
+                if(err){
+                    return res.status(401).send('Unauthorized');
                 }
                 return next();
             })
         } else {
-            return res.status(401).send('unathorized');
+            return res.status(401).send('Unauthorized');
         }
     } else {
         return next();
     }
 });
 
+app.set('view engine', 'hbs');
+
+
+// routes
 app.get('/', auth.viewLogin);
 app.post('/', auth.apiLogin);
 
@@ -45,10 +50,25 @@ app.post('/register', auth.apiRegister);
 
 app.get('/dashboard', dashboard.viewDashboard);
 
+// from here to the end 
+app.get('/users/new', users.viewNewUser)
+app.post('/users/new', users.apiNewUser)
+app.get('/users/edit/:id/:first_name/:last_name/:email', users.viewEditUser)
+app.post('/users/edit', users.apiEditUser)
+app.get('/users/delete/:id/:email', users.viewDeleteUser)
+app.post('/users/delete', users.apiDeleteUser)
+
+app.get('/blogposts', blogposts.viewBlogpost)
+app.get('/blogposts/new', blogposts.viewNewBlogpost)
+app.post('/blogposts/new', blogposts.apiNewBlogpost)
+app.get('/blogposts/edit', blogposts.viewEditBlogpost)
+app.post('/blogposts/edit', blogposts.apiEditBlogpost)
+app.get('/blogposts/delete', blogposts.apiDeleteBlogpost)
+
 app.listen(8080, (err) => {
-    if (err) {
+    if(err){
         console.error(err);
         return;
     }
     console.log('Started on port 8080');
-})
+});

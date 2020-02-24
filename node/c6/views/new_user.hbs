@@ -4,15 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/main.css" />
-    <title>Login</title>
+    <link rel="stylesheet" href="/styles/dashboard.css" />
+    <title>Add new user</title>
 </head>
 
 <body>
+     <header>
+        <div>
+            <h2>New User</h2>
+            <a href="/">Log out</a>
+        </div>
+    </header>
     <div class="main-container">
         <div class="form">
-            <h1>Register</h1>
-            <form method="post" action="/register">
+            <h1>Add new User</h1>
+            <form method="post" action="/users/new">
                 <label>
                     <span>First Name</span>
                     <input type="text" name="first_name" required="required" />
@@ -33,8 +39,8 @@
                     <span>Re-type Password</span>
                     <input type="password" name="password2" required="required" />
                 </label>
-                <button type="submit">Register</button>
-                <a class="reglink" href="/">Back to Login</a>
+                <button type="submit">Add New</button>
+                <a class="reglink" href="/dashboard">Back to Dashboard</a>
             </form>
         </div>
     </div>

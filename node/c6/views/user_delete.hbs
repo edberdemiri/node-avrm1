@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/dashboard.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <h2>Delete User</h2>
+            <a href="/">Log out</a>
+        </div>
+    </header><div class="form">
+    <h1>Confirm delete for the user with email: <br> {{email}}</h1>
+    <form action="/users/delete" method="post">
+    <input type="hidden" name="id" value="{{user_id}}">
+        <button type="submit">Delete</button>
+        <a href="/dashboard" class="reglink">Back to dashboard</a>
+    </form>
+    </div>
+</body>
+
+</html>
