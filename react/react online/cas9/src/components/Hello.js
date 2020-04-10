@@ -1,20 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { SayHello, LastName } from './../actions/SayHello'
-
-
+import { SayHello } from '../actions/SayHelloActions'
 
 class Hello extends React.Component {
 
-    componentDidMount() {
-        this.props.sayHello();
-        this.props.lastName();
+    componentDidMount = () => {
+        this.props.kaziZdravo();
     }
 
     render() {
         return (
             <div id="hello">
-                <h2>Hello, {this.props.name.email} {this.props.lastname}</h2>
+                <h2>Hello, {this.props.ime}</h2>
             </div>
         );
     }
@@ -22,23 +19,16 @@ class Hello extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        name: state.SayHelloReducer.name,
-        lastname: state.SayHelloReducer.lastname
+        ime: state.SayHelloReducer.name
     }
 }
-
 const mapDispatchToProps = (dispatch) => {
-   
     return {
-        
-        sayHello: () => {
+        kaziZdravo: () => {
             dispatch(SayHello())
-        },
-        lastName: () => {
-            dispatch(LastName())
         }
-
     }
 }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Hello)

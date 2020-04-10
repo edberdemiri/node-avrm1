@@ -9,7 +9,8 @@ const sayHelloReducer = (state = initialState, action) => {
         case "SAY_HELLO":
             return {
                 ...state,
-                name: action.payload
+                name: action.payload,
+                
             }
             case "LAST_NAME":
             return {
